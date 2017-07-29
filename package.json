@@ -1,5 +1,5 @@
 {
-  "name": "ember-cli-chartjs",
+  "name": "@onehilltech/ember-cli-chartjs",
   "version": "0.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [

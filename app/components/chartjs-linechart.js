@@ -1,0 +1,1 @@
+export { default } from 'ember-cli-chartjs/components/chartjs-linechart';
