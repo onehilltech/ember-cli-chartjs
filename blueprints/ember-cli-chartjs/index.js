@@ -11,7 +11,7 @@ module.exports = {
     })
     .then (() => {
       return this.addBowerPackagesToProject([
-        {name: 'chart.js', target: '^2.6.0'}
+        {name: 'chartjs', target: '^2.6.0'}
       ]);
     });
   }
