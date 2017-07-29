@@ -2,11 +2,11 @@
 'use strict';
 
 module.exports = {
-  name: ' ember-cli-chartjs',
+  name: 'ember-cli-chart.js',
 
   included: function (app) {
     this._super.included.apply (this, arguments);
 
-    app.import (app.bowerDirectory + '/dist/Chart.min.js');
+    app.import (app.bowerDirectory + '/chart.js/dist/Chart.min.js');
   }
 };
