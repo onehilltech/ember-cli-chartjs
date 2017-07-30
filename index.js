@@ -7,6 +7,9 @@ module.exports = {
   included: function (app) {
     this._super.included.apply (this, arguments);
 
-    app.import (app.bowerDirectory + '/chart.js/dist/Chart.min.js');
+    app.import ({
+      development: bowerDirectory + '/chart.js/dist/Chart.js',
+      production:  bowerDirectory + '/chart.js/dist/Chart.min.js'
+    });
   }
 };
