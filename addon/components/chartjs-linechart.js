@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import BaseChart from './base-chart';
+import Chart from './chart';
 
-export default BaseChart.extend ({
+export default Chart.extend ({
   type: 'line'
 });

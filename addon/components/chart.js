@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../templates/components/base-chart';
+import layout from '../templates/components/chart';
 
 export default Ember.Component.extend({
   layout,
