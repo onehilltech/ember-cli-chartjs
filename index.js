@@ -7,9 +7,13 @@ module.exports = {
   included: function (app) {
     this._super.included.apply (this, arguments);
 
+    app.import (app.bowerDirectory + '/chart.js/dist/Chart.js');
+
+    /*
     app.import ({
-      development: bowerDirectory + '/chart.js/dist/Chart.js',
-      production:  bowerDirectory + '/chart.js/dist/Chart.min.js'
+      development: app.bowerDirectory + '/chart.js/dist/Chart.js',
+      production:  app.bowerDirectory + '/chart.js/dist/Chart.min.js'
     });
+    */
   }
 };
