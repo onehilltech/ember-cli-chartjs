@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   didInsertElement () {
     this._super (...arguments);
 
-    let ctx = this.$ (this.elementId)[0];
+    let ctx = this.$ ()[0];
 
     if (this.get ('is2d')) {
       ctx = ctx.getContext ('2d');
