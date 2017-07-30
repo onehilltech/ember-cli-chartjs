@@ -6,6 +6,8 @@ export default Ember.Component.extend({
 
   tagName: 'canvas',
 
+  attributeBindings: ['height', 'width'],
+
   didInsertElement () {
     this._super (...arguments);
 
