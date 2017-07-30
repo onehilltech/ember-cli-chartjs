@@ -17,6 +17,16 @@ export default Ember.Component.extend({
     paddingRight: 'padding.right',
     paddingBottom: 'padding.bottom',
 
+    // options.title
+    titleDisplay: 'title.display',
+    titlePosition: 'title.position',
+    titleFontSize: 'title.fontSize',
+    titleFontFamily: 'title.fontFamily',
+    titleFontColor: 'title.fontColor',
+    titleFontStyle: 'title.fontStyle',
+    titlePadding: 'title.padding',
+    titleText: 'title.text',
+
     // options.legend
     legendDisplay: 'legend.display',
     legendPosition: 'legend.position',
