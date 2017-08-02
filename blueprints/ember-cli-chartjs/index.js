@@ -11,7 +11,9 @@ module.exports = {
     }).then (() => {
       return this.addBowerPackagesToProject([
         {name: 'chart.js', target: '^2.6.0'},
-        {name: 'chartjs-plugin-zoom', target: '^0.5.0'}
+
+        {name: 'chartjs-plugin-zoom', target: '^0.5.0'},
+        {name: 'hammerjs', target: '^2.0.6'}
       ]);
     });
   }
