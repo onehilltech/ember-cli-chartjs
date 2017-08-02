@@ -16,5 +16,10 @@ module.exports = {
       development: app.bowerDirectory + '/chartjs-plugin-zoom/chartjs-plugin-zoom.js',
       production:  app.bowerDirectory + '/chartjs-plugin-zoom/chartjs-plugin-zoom.min.js'
     });
+
+    app.import ({
+      development: app.bowerDirectory + '/hammerjs/hammer.js',
+      production:  app.bowerDirectory + '/hammerjs/hammer.min.js'
+    });
   }
 };
