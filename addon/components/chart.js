@@ -45,16 +45,11 @@ export default Ember.Component.extend({
     this._super (...arguments);
 
     if (Ember.isPresent (changeSet.newAttrs)) {
-      // This determine if we need to redraw the chart. We redraw the chart if the
-      // data has changed, or one of the chart options has changed.
       let redrawChart = false;
 
-      if (Ember.isPresent (changeSet.newAttrs.data)) {
-        redrawChart = true;
-      }
-
+      // This determine if we need to redraw the chart. We redraw the chart if the
+      // data has changed, or one of the chart options has changed.
       for (let prop in changeSet.newAttrs) {
-
         let targetChartOption = this.get ('chartOptionsMapping')[prop];
 
         if (Ember.isPresent (targetChartOption)) {
@@ -89,27 +84,30 @@ export default Ember.Component.extend({
         }
       }
 
-      if (redrawChart && Ember.isPresent (this.get ('chart'))) {
-        this.drawChart ();
-      }
+      if (redrawChart)
+        this.set ('chart', null);
     }
   },
 
-  didInsertElement () {
+  didRender () {
     this._super (...arguments);
 
-    let ctx = this.$ ()[0];
+    let chart = this.get ('chart');
 
-    if (this.get ('is2d')) {
-      ctx = ctx.getContext ('2d');
+    if (Ember.isNone (chart)) {
+      let ctx = this.$ ()[0];
+
+      if (this.get ('is2d')) {
+        ctx = ctx.getContext ('2d');
+      }
+
+      chart = new Chart (ctx, {
+        type: this.get ('type'),
+        data: this.get ('data'),
+        options: this.get ('options')
+      });
+
+      this.set ('chart', chart);
     }
-
-    let chart = new Chart (ctx, {
-      type: this.get ('type'),
-      data: this.get ('data'),
-      options: this.get ('options')
-    });
-
-    this.set ('chart', chart);
   }
 });
