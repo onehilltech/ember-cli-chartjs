@@ -6,11 +6,12 @@ module.exports = {
   afterInstall () {
     return this.addAddonsToProject({
       packages: [
-        {name: 'ember-cli-moment-shim', target: '3.3.3'}
+        {name: 'ember-cli-moment-shim', target: '3.3.3'},
       ]
     }).then (() => {
       return this.addBowerPackagesToProject([
-        {name: 'chart.js', target: '^2.6.0'}
+        {name: 'chart.js', target: '^2.6.0'},
+        {name: 'chartjs-plugin-zoom', target: '^0.5.0'}
       ]);
     });
   }
