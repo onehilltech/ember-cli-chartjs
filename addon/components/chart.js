@@ -44,44 +44,45 @@ export default Ember.Component.extend({
   didReceiveAttrs (changeSet) {
     this._super (...arguments);
 
-    if (Ember.isPresent (changeSet.newAttrs)) {
-      let redrawChart = false;
+    let redrawChart = false;
 
-      // This determine if we need to redraw the chart. We redraw the chart if the
-      // data has changed, or one of the chart options has changed.
-      for (let prop in changeSet.newAttrs) {
-        let targetChartOption = this.get ('chartOptionsMapping')[prop];
+    // This determine if we need to redraw the chart. We redraw the chart if the
+    // data has changed, or one of the chart options has changed.
+    let attrs = Object.keys (this.attrs);
 
-        if (Ember.isPresent (targetChartOption)) {
-          // If this is a nested option, make sure the parent option exists.
-          let targetChartOptionParts = targetChartOption.split ('.');
+    for (let i = 0, len = attrs.length; i < len; ++ i) {
+      let attr = attrs[i];
+      let targetChartOption = this.get ('chartOptionsMapping')[attr];
 
-          if (targetChartOptionParts.length > 1) {
-            // Remove the last element in the array, which is the leaf option
-            // that we are setting.
-            targetChartOptionParts.pop ();
+      if (Ember.isPresent (targetChartOption)) {
+        // If this is a nested option, make sure the parent option exists.
+        let targetChartOptionParts = targetChartOption.split ('.');
 
-            let parentOptionKey = 'options';
+        if (targetChartOptionParts.length > 1) {
+          // Remove the last element in the array, which is the leaf option
+          // that we are setting.
+          targetChartOptionParts.pop ();
 
-            targetChartOptionParts.forEach ((part) => {
-              parentOptionKey += `.${part}`;
+          let parentOptionKey = 'options';
 
-              let option = this.get (parentOptionKey);
+          targetChartOptionParts.forEach ((part) => {
+            parentOptionKey += `.${part}`;
 
-              if (Ember.isNone (option)) {
-                this.set (parentOptionKey, {});
-              }
-            });
-          }
+            let option = this.get (parentOptionKey);
 
-          // Now, we can set the value on the options.
-          let value = this.get (prop);
-          let optionKey = `options.${targetChartOption}`;
-
-          this.set (optionKey, value);
-
-          redrawChart = true;
+            if (Ember.isNone (option)) {
+              this.set (parentOptionKey, {});
+            }
+          });
         }
+
+        // Now, we can set the value on the options.
+        let value = this.get (attr);
+        let optionKey = `options.${targetChartOption}`;
+
+        this.set (optionKey, value);
+
+        redrawChart = true;
       }
 
       if (redrawChart)
