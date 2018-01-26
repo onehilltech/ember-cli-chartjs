@@ -1,5 +1,5 @@
 import Chart from './chart';
 
 export default Chart.extend ({
-  type: 'donut'
+  type: 'doughnut'
 });
