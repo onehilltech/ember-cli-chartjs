@@ -1,0 +1,1 @@
+export { default } from '@onehilltech/ember-cli-chartjs/components/chartjs-donutchart';
