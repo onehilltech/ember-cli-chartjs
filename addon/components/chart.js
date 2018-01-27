@@ -2,6 +2,12 @@ import Ember from 'ember';
 import layout from '../templates/components/chart';
 
 export default Ember.Component.extend({
+  init () {
+    this._super (...arguments);
+
+    this.set ('options', {});
+  },
+
   layout,
 
   tagName: 'canvas',
