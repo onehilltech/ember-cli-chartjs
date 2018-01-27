@@ -41,10 +41,13 @@ export default Ember.Component.extend({
     legendLabelsUsePointStyle: 'legend.labels.usePointStyle',
   },
 
-  didReceiveAttrs (changeSet) {
+  didReceiveAttrs () {
     this._super (...arguments);
 
-    let redrawChart = false;
+    let {data,_data} = this.getProperties (['data','_data']);
+    let redrawChart = data !== _data;
+
+    this.set ('_data', data);
 
     // This determine if we need to redraw the chart. We redraw the chart if the
     // data has changed, or one of the chart options has changed.
