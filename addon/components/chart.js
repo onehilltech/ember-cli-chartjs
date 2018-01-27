@@ -44,11 +44,6 @@ export default Ember.Component.extend({
   didReceiveAttrs () {
     this._super (...arguments);
 
-    let {data,_data} = this.getProperties (['data','_data']);
-    let redrawChart = data !== _data;
-
-    this.set ('_data', data);
-
     // This determine if we need to redraw the chart. We redraw the chart if the
     // data has changed, or one of the chart options has changed.
     let attrs = Object.keys (this.attrs);
@@ -84,12 +79,7 @@ export default Ember.Component.extend({
         let optionKey = `options.${targetChartOption}`;
 
         this.set (optionKey, value);
-
-        redrawChart = true;
       }
-
-      if (redrawChart)
-        this.set ('chart', null);
     }
   },
 
@@ -97,21 +87,42 @@ export default Ember.Component.extend({
     this._super (...arguments);
 
     let chart = this.get ('chart');
+    let {type,data,_data,options,is2d} = this.getProperties (['type','data','_data','options','is2d']);
 
     if (Ember.isNone (chart)) {
       let ctx = this.$ ()[0];
 
-      if (this.get ('is2d')) {
+      if (is2d) {
         ctx = ctx.getContext ('2d');
       }
 
-      chart = new Chart (ctx, {
-        type: this.get ('type'),
-        data: this.get ('data'),
-        options: this.get ('options')
-      });
-
+      chart = new Chart (ctx, {type, data, options});
       this.set ('chart', chart);
+    }
+    else {
+      let update = false;
+
+      if (data !== _data) {
+        // We need to update the data.
+        chart.data = data;
+
+        update = true;
+        this.set ('_data', data);
+      }
+
+      if (update) {
+        chart.update ();
+      }
+    }
+  },
+
+  willDestroyElement () {
+    this._super (...arguments);
+
+    let chart = this.get ('chart');
+
+    if (chart) {
+      chart.destroy ();
     }
   }
 });
