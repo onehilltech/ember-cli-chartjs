@@ -1,5 +1,7 @@
 # @onehilltech/ember-cli-chartjs
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/onehilltech/ember-cli-chartjs.svg)](https://greenkeeper.io/)
+
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
