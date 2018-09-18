@@ -1,7 +1,12 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import layout from '../templates/components/chart';
 
-export default Ember.Component.extend({
+import { computed } from '@ember/object';
+import { isPresent } from '@ember/utils';
+
+import { transform, set, isEqual, isObjectLike, isEmpty, merge } from 'lodash';
+
+export default Component.extend({
   layout,
 
   tagName: 'canvas',
@@ -43,85 +48,49 @@ export default Ember.Component.extend({
     legendLabelsUsePointStyle: 'legend.labels.usePointStyle',
   },
 
-  init () {
+  chartOptionsKeys: computed ('chartOptionsMapping', function () {
+    return Object.keys (this.get ('chartOptionsMapping'));
+  }),
+
+  /**
+   * The options for the chart. Right now, we are going to recomputed the options
+   * each time the attributes are updated. Unfortunately, this is our only option
+   * since we do not have an easy way to define the dependencies for this computed
+   * property.
+   */
+  options: computed (function () {
+    const { chartOptionsKeys, chartOptionsMapping } = this.getProperties (['chartOptionsKeys', 'chartOptionsMapping']);
+    const values = this.getProperties (chartOptionsKeys);
+
+    return transform (values, (options, value, name) => value !== undefined ? set (options, chartOptionsMapping[name], value) : options, {});
+  }).volatile (),
+
+  _chart: null,
+
+  didInsertElement () {
     this._super (...arguments);
 
-    this.set ('options', {});
+    let { type, data, options, is2d } = this.getProperties (['type','data','_data','options','is2d']);
+    let ctx = this.element;
+
+    if (is2d) {
+      ctx = ctx.getContext ('2d');
+    }
+
+    this._chart = new Chart (ctx, {type, data, options});
   },
 
-  didReceiveAttrs () {
+  didUpdateAttrs () {
     this._super (...arguments);
 
-    // This determine if we need to redraw the chart. We redraw the chart if the
-    // data has changed, or one of the chart options has changed.
-    let attrs = Object.keys (this.attrs);
+    const { options, data } = this.getProperties (['options', 'data']);
 
-    for (let i = 0, len = attrs.length; i < len; ++ i) {
-      let attr = attrs[i];
-      let targetChartOption = this.get ('chartOptionsMapping')[attr];
+    // Merge the options with the chart options, and set the data.
+    merge (this._chart.config.options, options);
+    this._chart.config.data = data;
 
-      if (Ember.isPresent (targetChartOption)) {
-        // If this is a nested option, make sure the parent option exists.
-        let targetChartOptionParts = targetChartOption.split ('.');
-
-        if (targetChartOptionParts.length > 1) {
-          // Remove the last element in the array, which is the leaf option
-          // that we are setting.
-          targetChartOptionParts.pop ();
-
-          let parentOptionKey = 'options';
-
-          targetChartOptionParts.forEach ((part) => {
-            parentOptionKey += `.${part}`;
-
-            let option = this.get (parentOptionKey);
-
-            if (Ember.isNone (option)) {
-              this.set (parentOptionKey, {});
-            }
-          });
-        }
-
-        // Now, we can set the value on the options.
-        let value = this.get (attr);
-        let optionKey = `options.${targetChartOption}`;
-
-        this.set (optionKey, value);
-      }
-    }
-  },
-
-  didRender () {
-    this._super (...arguments);
-
-    let chart = this.get ('chart');
-    let {type,data,_data,options,is2d} = this.getProperties (['type','data','_data','options','is2d']);
-
-    if (Ember.isNone (chart)) {
-      let ctx = this.$ ()[0];
-
-      if (is2d) {
-        ctx = ctx.getContext ('2d');
-      }
-
-      chart = new Chart (ctx, {type, data, options});
-      this.set ('chart', chart);
-    }
-    else {
-      let update = false;
-
-      if (data !== _data) {
-        // We need to update the data.
-        chart.data = data;
-
-        update = true;
-        this.set ('_data', data);
-      }
-
-      if (update) {
-        chart.update ();
-      }
-    }
+    // Update the chart.
+    this._chart.update ();
   },
 
   willDestroyElement () {
@@ -129,7 +98,7 @@ export default Ember.Component.extend({
 
     let chart = this.get ('chart');
 
-    if (chart) {
+    if (isPresent (chart)) {
       chart.destroy ();
     }
   }
