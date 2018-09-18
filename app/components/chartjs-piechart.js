@@ -1,1 +1,1 @@
-export { default } from 'ember-cli-chartjs/components/chartjs-piechart';
+export { default } from '@onehilltech/ember-cli-chartjs/components/chartjs-piechart';
