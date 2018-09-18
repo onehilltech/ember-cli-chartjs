@@ -13,11 +13,11 @@ export default Ember.Component.extend({
   mergedProperties: ['chartOptionsMapping'],
 
   chartOptionsMapping: {
-    // options.padding
-    paddingLeft: 'padding.left',
-    paddingTop: 'padding.top',
-    paddingRight: 'padding.right',
-    paddingBottom: 'padding.bottom',
+    // options.layout.padding
+    layoutPaddingLeft: 'layout.padding.left',
+    layoutPaddingTop: 'layout.padding.top',
+    layoutPaddingRight: 'layout.padding.right',
+    layoutPaddingBottom: 'layout.padding.bottom',
 
     // options.title
     titleDisplay: 'title.display',
