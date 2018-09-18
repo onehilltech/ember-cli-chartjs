@@ -5,11 +5,11 @@ module.exports = {
   name: 'ember-cli-chartjs',
 
   included: function (app) {
-    this._super.included.apply (this, arguments);
+    this._super (...arguments);
 
     app.import ({
-      development: app.bowerDirectory + '/chart.js/dist/Chart.js',
-      production:  app.bowerDirectory + '/chart.js/dist/Chart.min.js'
+      development: 'node_modules/chart.js/dist/Chart.js',
+      production:  'node_modules/chart.js/dist/Chart.min.js'
     });
   }
 };
