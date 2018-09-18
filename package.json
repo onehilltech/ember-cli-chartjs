@@ -1,6 +1,6 @@
 {
   "name": "@onehilltech/ember-cli-chartjs",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "ember-cli addon for Chart.js.",
   "keywords": [
     "ember-addon"
