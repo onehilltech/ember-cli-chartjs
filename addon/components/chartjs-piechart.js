@@ -1,5 +1,7 @@
 import Chart from './chart';
 
 export default Chart.extend ({
-  type: 'pie'
+  type: 'pie',
+
+  classNames: ['chartjs-pie-chart'],
 });

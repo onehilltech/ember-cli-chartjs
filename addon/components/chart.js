@@ -2,15 +2,11 @@ import Ember from 'ember';
 import layout from '../templates/components/chart';
 
 export default Ember.Component.extend({
-  init () {
-    this._super (...arguments);
-
-    this.set ('options', {});
-  },
-
   layout,
 
   tagName: 'canvas',
+
+  classNames: ['chartjs-chart'],
 
   attributeBindings: ['height', 'width'],
 
@@ -45,6 +41,12 @@ export default Ember.Component.extend({
     legendLabelsFontFamily: 'legend.labels.fontFamily',
     legendLabelsPadding: 'legend.labels.padding',
     legendLabelsUsePointStyle: 'legend.labels.usePointStyle',
+  },
+
+  init () {
+    this._super (...arguments);
+
+    this.set ('options', {});
   },
 
   didReceiveAttrs () {
