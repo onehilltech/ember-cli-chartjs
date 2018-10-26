@@ -6,6 +6,7 @@ import { isPresent } from '@ember/utils';
 
 import { transform, set, isEqual, isObjectLike, isEmpty, merge } from 'lodash';
 
+var tooltipbodyFontColor;
 export default Component.extend({
   layout,
 
@@ -46,6 +47,13 @@ export default Component.extend({
     legendLabelsFontFamily: 'legend.labels.fontFamily',
     legendLabelsPadding: 'legend.labels.padding',
     legendLabelsUsePointStyle: 'legend.labels.usePointStyle',
+
+    tooltip: 'tooltip.enabled',
+    tooltipPosition: 'tooltip.position',
+    tooltipTitleFontFamily: 'tooltip.titleFontFamily',
+    tooltipTitleFontColor: 'tooltip.titleFontColor',
+    tooltipBodyFontFamily: 'tooltip.bodyFontFamily',
+    tooltipBodyFontColor: 'tooltip.bodyFontColor'
   },
 
   chartOptionsKeys: computed ('chartOptionsMapping', function () {
