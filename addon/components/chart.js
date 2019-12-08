@@ -53,7 +53,8 @@ export default Component.extend({
     tooltipTitleFontFamily: 'tooltip.titleFontFamily',
     tooltipTitleFontColor: 'tooltip.titleFontColor',
     tooltipBodyFontFamily: 'tooltip.bodyFontFamily',
-    tooltipBodyFontColor: 'tooltip.bodyFontColor'
+    tooltipBodyFontColor: 'tooltip.bodyFontColor',
+    tooltipCustom: 'tooltip.custom',
   },
 
   chartOptionsKeys: computed ('chartOptionsMapping', function () {
