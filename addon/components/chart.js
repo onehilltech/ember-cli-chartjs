@@ -48,13 +48,13 @@ export default Component.extend({
     legendLabelsPadding: 'legend.labels.padding',
     legendLabelsUsePointStyle: 'legend.labels.usePointStyle',
 
-    tooltip: 'tooltip.enabled',
-    tooltipPosition: 'tooltip.position',
-    tooltipTitleFontFamily: 'tooltip.titleFontFamily',
-    tooltipTitleFontColor: 'tooltip.titleFontColor',
-    tooltipBodyFontFamily: 'tooltip.bodyFontFamily',
-    tooltipBodyFontColor: 'tooltip.bodyFontColor',
-    tooltipCustom: 'tooltip.custom',
+    tooltip: 'tooltips.enabled',
+    tooltipPosition: 'tooltips.position',
+    tooltipTitleFontFamily: 'tooltips.titleFontFamily',
+    tooltipTitleFontColor: 'tooltips.titleFontColor',
+    tooltipBodyFontFamily: 'tooltips.bodyFontFamily',
+    tooltipBodyFontColor: 'tooltips.bodyFontColor',
+    tooltipCustom: 'tooltips.custom',
   },
 
   chartOptionsKeys: computed ('chartOptionsMapping', function () {
