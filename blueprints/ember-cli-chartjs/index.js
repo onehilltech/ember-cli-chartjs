@@ -8,6 +8,7 @@ module.exports = Blueprint.extend ({
 
   addons: [
     {name: 'ember-cli-moment-shim', target: '3.4.0'},
-    {name: 'ember-lodash'}
+    {name: 'ember-lodash'},
+    {name: 'ember-cli-custom-properties'}
   ]
 });
