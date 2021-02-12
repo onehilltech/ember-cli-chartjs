@@ -2,6 +2,7 @@
 'use strict';
 
 module.exports = {
+<<<<<<< HEAD
   name: '@onehilltech/ember-cli-chartjs',
 
   included: function (app) {
@@ -12,4 +13,7 @@ module.exports = {
       production:  'node_modules/chart.js/dist/Chart.min.js'
     });
   }
+=======
+  name: require('./package').name
+>>>>>>> 1fe2476... v3.3.0...v3.18.0
 };
