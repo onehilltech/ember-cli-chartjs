@@ -4,7 +4,14 @@ import layout from '../templates/components/chart';
 import { computed } from '@ember/object';
 import { isPresent } from '@ember/utils';
 
-import { transform, set, isEqual, isObjectLike, isEmpty, merge } from 'lodash';
+import {
+  transform,
+  set,
+  isEqual,
+  isObjectLike,
+  isEmpty,
+  merge
+} from 'lodash';
 
 var tooltipbodyFontColor;
 export default Component.extend({
@@ -58,7 +65,7 @@ export default Component.extend({
   },
 
   chartOptionsKeys: computed ('chartOptionsMapping', function () {
-    return Object.keys (this.get ('chartOptionsMapping'));
+    return Object.keys (this.chartOptionsMapping);
   }),
 
   /**
@@ -68,7 +75,7 @@ export default Component.extend({
    * property.
    */
   options: computed (function () {
-    const { chartOptionsKeys, chartOptionsMapping } = this.getProperties (['chartOptionsKeys', 'chartOptionsMapping']);
+    const { chartOptionsKeys, chartOptionsMapping } = this;
     const values = this.getProperties (chartOptionsKeys);
 
     return transform (values, (options, value, name) => value !== undefined ? set (options, chartOptionsMapping[name], value) : options, {});
@@ -79,7 +86,7 @@ export default Component.extend({
   didInsertElement () {
     this._super (...arguments);
 
-    let { type, data, options, is2d } = this.getProperties (['type','data','_data','options','is2d']);
+    let { type, data, options, is2d } = this;
     let ctx = this.element;
 
     if (is2d) {
@@ -92,7 +99,7 @@ export default Component.extend({
   didUpdateAttrs () {
     this._super (...arguments);
 
-    const { options, data } = this.getProperties (['options', 'data']);
+    const { options, data } = this;
 
     // Merge the options with the chart options, and set the data.
     merge (this._chart.config.options, options);
@@ -105,7 +112,7 @@ export default Component.extend({
   willDestroyElement () {
     this._super (...arguments);
 
-    let chart = this.get ('chart');
+    let chart = this.chart;
 
     if (isPresent (chart)) {
       chart.destroy ();
