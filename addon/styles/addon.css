@@ -1,0 +1,8 @@
+.chartjs-tooltip {
+  position: absolute;
+
+  left: var(--chartjs-tooltip-left);
+  top: var(--chartjs-tooltip-top);
+
+  pointer-events: none;
+}

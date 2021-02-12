@@ -2,28 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c48ff438-4d4e-404b-bd29-d3c4137fbd94" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.template-lintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CONTRIBUTING.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/dummy/config/ember-cli-update.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/dummy/config/optional-features.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon/components/chartjs-tooltip.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon/components/chartjs-tooltip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/addon/styles/addon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/chartjs-tooltip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/components/chartjs-tooltip-test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.npmignore" beforeDir="false" afterPath="$PROJECT_DIR$/.npmignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/ember-try.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/ember-try.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codemods.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testem.js" beforeDir="false" afterPath="$PROJECT_DIR$/testem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dummy/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/dummy/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dummy/app/resolver.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dummy/app/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/dummy/app/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dummy/app/templates/components/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/codemods.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dummy/app/templates/index.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/dummy/app/templates/index.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dummy/config/environment.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/dummy/config/environment.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +89,7 @@
       <workItem from="1593399351299" duration="185000" />
       <workItem from="1593400116422" duration="676000" />
       <workItem from="1613072286148" duration="8000" />
-      <workItem from="1613153203403" duration="4600000" />
+      <workItem from="1613153203403" duration="6211000" />
     </task>
     <servers />
   </component>
